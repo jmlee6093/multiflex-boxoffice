@@ -9,7 +9,7 @@ import json
 
 load_dotenv()
 KOBIS_API_KEY = os.environ.get("KOBIS_API_KEY")
-KOBIS_WEEKLY_URL = "https://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json"
+KOBIS_WEEKLY_URL = "https://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json"
 
 cache = {"date" : None, "data" : None}
 
@@ -44,9 +44,8 @@ def boxoffice():
             
 def fetch_KOBIS(KOBIS_TIME_FORMAT: str):
     params = {
-        "key": KOBIS_API_KEY,
-        "targetDt": KOBIS_TIME_FORMAT,
-        "weekGb": "0",
+    "key": KOBIS_API_KEY,
+    "targetDt": KOBIS_TIME_FORMAT,
     }
     r = requests.get(KOBIS_WEEKLY_URL, params = params, timeout = 10)
     r.raise_for_status()
@@ -64,8 +63,8 @@ def format_movies(kobis_response: dict, metadata: dict, top_n: int = 6):
       
     if "boxOfficeResult" in kobis_response:
         box_office_result = kobis_response["boxOfficeResult"]
-        if "weeklyBoxOfficeList" in box_office_result:
-            box_list = box_office_result["weeklyBoxOfficeList"]
+        if "dailyBoxOfficeList" in box_office_result:
+            box_list = box_office_result["dailyBoxOfficeList"]
         else:
             box_list = []
     else:
