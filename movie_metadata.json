@@ -1,12 +1,4 @@
 {
-  "_README": "이 파일은 KOBIS movieCd를 키로 사용합니다. server_boxoffice.py가 /api/boxoffice를 호출하면 응답의 각 영화에 movie_cd 필드가 포함되어 있으니, 시연 전에 한 번 실행해서 movieCd를 확인하고 이 파일에 항목을 추가해주세요. 매핑 누락된 영화는 placeholder 이미지와 'N/A' 평점으로 표시됩니다.",
-  "_EXAMPLE_FORMAT": {
-    "20259999": {
-      "rating": "9.18",
-      "image": "/images/index1_movie_image.webp",
-      "_comment": "왕과 사는 남자 - 시연용 샘플. 실제 movieCd로 교체해주세요."
-    }
-  },
   "20259626": {
     "rating": "8.82",
     "image": "/images/michael.webp"
